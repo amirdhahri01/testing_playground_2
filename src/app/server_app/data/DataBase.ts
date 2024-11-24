@@ -31,8 +31,8 @@ export class DataBase<T extends ObjectWithId> {
         const index = this.elements.findIndex(x => x.id === id)
         this.elements.splice(index, 1);
     }
-
-    public async getAllElements(){
+ 
+    public async getAllElements() {
         return this.elements;
     }
 
