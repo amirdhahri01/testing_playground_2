@@ -6,7 +6,7 @@ class Launcher {
 
     public startServer(){
         this.server.startServer();
-    } 
+    }  
 
     public stopServer(){
         this.server.stopServer();
