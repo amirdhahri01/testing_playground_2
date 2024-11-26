@@ -1,7 +1,5 @@
 // import { TestData } from "../test/test";
 
-import swapiGetter from "../test/test"
-
 // const getDataMock = jest.fn()
 
 // jest.mock("../test/test", () => {
@@ -38,14 +36,40 @@ import swapiGetter from "../test/test"
 
 // })
 
-jest.mock("axios")
-jest.fn()
+import swapiGetter from "../test/test"
+import axios from "axios"
+const mockAxios = axios as jest.Mocked<typeof axios>
+jest.mock("axios" , () => {
+   return {
+        __esModule : true,
+        default : {
+            get : jest.fn().mockResolvedValue({data :  {  name: "Luke Skywalker" }})
+        }
+    }
+})
 
-describe("SwappGetter test suite" , () => {
-    it("Should return a name" , async () => {
+mockAxios.get.mockResolvedValue({
+    data: {
+        name: "Luke Skywalker"
+    }
+})
+
+describe("SwappGetter test suite", () => {
+    afterEach(() => {
+        jest.clearAllMocks();
+    })
+ 
+    it("Should return a name", async () => {
         const result = await swapiGetter("1");
         const actual = "Luke Skywalker"
         expect(result).toBe(actual)
+        expect(mockAxios.get).toHaveBeenCalledTimes(1);
+    })
+
+    it("Should return a name", async () => {
+        const result = await swapiGetter("1");
+        const actual = "Luke Skywalker"
+        expect(result).toBe(actual)
+        expect(mockAxios.get).toHaveBeenCalledTimes(1);
     })
 })
- 
