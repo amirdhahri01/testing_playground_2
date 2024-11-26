@@ -1,39 +1,51 @@
-import { TestData } from "../test/test";
+// import { TestData } from "../test/test";
 
-const getDataMock = jest.fn()
+import swapiGetter from "../test/test"
 
-jest.mock("../test/test", () => {
-    const originalModule = jest.requireActual("../test/test");
-    return {
-        ...originalModule, 
-        TestData: jest.fn().mockImplementation(() => ({
-            ...new originalModule.TestData(),
-            getData: getDataMock,
-        })),
-    };
-});
+// const getDataMock = jest.fn()
+
+// jest.mock("../test/test", () => {
+//     const originalModule = jest.requireActual("../test/test");
+//     return {
+//         ...originalModule, 
+//         TestData: jest.fn().mockImplementation(() => ({
+//             ...new originalModule.TestData(),
+//             getData: getDataMock,
+//         })),
+//     };
+// });
 
 
-describe.only("test test suite", () => {
+// describe.only("test test suite", () => {
 
-    let sut : TestData;
+//     let sut : TestData;
 
-    beforeEach(() => {
-        sut = new TestData();
+//     beforeEach(() => {
+//         sut = new TestData();
+//     })
+
+//     afterEach(() => {
+//         jest.clearAllMocks();
+//     })
+
+//     it("Should be amir dhahri ==>",  async() => {
+//         getDataMock.mockResolvedValueOnce("amir dhahri ==> ") 
+//         const data = await sut.getData("Amir Dhahri")
+//         const actual = sut.printData(data as any)
+//         const expected = "Amir Dhahri ==> 123";
+//         expect(actual).toBe(expected)
+//     })
+
+// })
+
+jest.mock("axios")
+jest.fn()
+
+describe("SwappGetter test suite" , () => {
+    it("Should return a name" , async () => {
+        const result = await swapiGetter("1");
+        const actual = "Luke Skywalker"
+        expect(result).toBe(actual)
     })
-
-    afterEach(() => {
-        jest.clearAllMocks();
-    })
-
-    it("Should be amir dhahri ==>",  async() => {
-        getDataMock.mockResolvedValueOnce("amir dhahri ==> ") 
-        const data = await sut.getData("Amir Dhahri")
-        const actual = sut.printData(data as any)
-        const expected = "Amir Dhahri ==> 123";
-        expect(actual).toBe(expected)
-    })
-
 })
-
-
+ 
