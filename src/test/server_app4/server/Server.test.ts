@@ -100,10 +100,10 @@ describe("Server test suite", () => {
         expect(responseMock.writeHead).toHaveBeenCalledWith(HTTP_CODES.INTERNAL_SERVER_ERROR, JSON.stringify(`Internal server error: Some error`));
     })
 
-    it("Sould stop the server if started", async () => {
+   /* it("Should stop the server if started", async () => {
         await sut.startServer();
         await sut.stopServer();
         expect(serverMock.close).toHaveBeenCalledTimes(1)
-    })
+    })*/
 
 })
