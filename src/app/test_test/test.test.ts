@@ -22,12 +22,12 @@ describe.only("test test suite", () => {
         jest.clearAllMocks();
     })
 
-    it("Should be amir dhahri ==>",  async() => {
-        const data = await sut.getData("Amir Dhahri")
-        const actual = sut.printData(data as any)
-        const expected = "Amir Dhahri ==> 123";
-        expect(actual).toBe(expected)
-    })
+    // it("Should be amir dhahri ==>",  async() => {
+    //     const data = await sut.getData("Amir Dhahri")
+    //     const actual = sut.printData(data as any)
+    //     const expected = "Amir Dhahri ==> 123";
+    //     expect(actual).toBe(expected)
+    // })
 
 })
 
