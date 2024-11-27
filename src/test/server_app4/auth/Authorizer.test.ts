@@ -56,9 +56,20 @@ describe("Authorizer test suite" , () => {
     })
 
     it("Should validate token" ,async () => {
-        isValidTokenMock.mockResolvedValue(false);
+        isValidTokenMock.mockResolvedValueOnce(false);
         const actual = await sut.validateToken(someId);
         expect(actual).toBeFalsy();
+    })
+
+    it("Should return id for new registered user" , async () => {
+        addUserMock.mockResolvedValueOnce(someId);
+        const actual = await sut.registerUser(someUserName , somePassword);
+        expect(actual).toBe(someId);
+        expect(addUserMock).toHaveBeenCalledWith({
+            id : "",
+            password : somePassword,
+            userName :  someUserName
+        })
     })
 
 })

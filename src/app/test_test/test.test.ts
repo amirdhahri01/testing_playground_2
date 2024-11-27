@@ -87,3 +87,50 @@
 //         expect(actual).toBe(expected);
 //     })
 // })
+import {Car} from "../test/test"
+
+const fetchMock = jest.fn();
+const getDataMock = jest.fn();
+
+jest.mock("../test/test" , () => {
+    return {
+        Car : jest.fn().mockImplementation(() => {
+            return {
+                fetch : fetchMock,
+            }
+        })
+    }
+})
+
+describe("Car test suite" , () => {
+    let sut : Car;
+
+    beforeEach(() => {
+        sut = new Car();
+    })
+
+    afterEach(() => {
+        jest.clearAllMocks();
+    })
+
+    const url = "12347";
+
+    it("Should return json object" , () => {
+        fetchMock.mockResolvedValueOnce({
+            url : url,
+            name : "amir",
+            age : 20,
+            university : "FSG"
+        })
+        const actual = sut.getData(url);
+        const ex  =  {
+            url : url,
+            name : "amir",
+            age : 20,
+            university : "FSG"
+        };
+        expect(actual).toEqual(ex);
+         //const expected = sut.getData(url);
+    })
+    
+})

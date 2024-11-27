@@ -23,3 +23,25 @@
 // }
 
 // export default swapiGetter
+
+export class Car{
+    
+    public fetch(url : string){
+        return new Promise((resolve , reject) => {
+            return setTimeout(() => {
+                resolve({
+                    url : url,
+                    name : "amir",
+                    age : 20,
+                    university : "FSG"
+                })
+            }, 500)
+        })
+    }
+
+    public async getData(url : string){
+        const data = await this.fetch(url);
+        return data;
+    }
+    
+}
