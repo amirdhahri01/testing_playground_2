@@ -1,26 +1,28 @@
-import { TestData } from "../test/test";
-import Print from "../test/test1";
+// import { TestData } from "../test/test";
+// import Print from "../test/test1";
 
-jest.mock("../test/test", () => {
-     return {
-        default :{
-            getData : jest.fn().mockResolvedValue((data : string) => data)
-        }
-     }
-});
+// import { TestData } from "../test/test"
+
+// jest.mock("../test/test", () => {
+//      return {
+//         default :{
+//             getData : jest.fn().mockResolvedValue((data : string) => data)
+//         }
+//      }
+// });
 
 
-describe.only("test test suite", () => {
+// describe.only("test test suite", () => {
 
-    let sut : Print;
+//     let sut : Print;
 
-    beforeEach(() => {
-        sut = new Print();
-    })
+//     beforeEach(() => {
+//         sut = new Print();
+//     })
 
-    afterEach(() => {
-        jest.clearAllMocks();
-    })
+//     afterEach(() => {
+//         jest.clearAllMocks();
+//     })
 
     // it("Should be amir dhahri ==>",  async() => {
     //     const data = await sut.getData("Amir Dhahri")
@@ -29,7 +31,7 @@ describe.only("test test suite", () => {
     //     expect(actual).toBe(expected)
     // })
 
-})
+// })
 
 // import swapiGetter from "../test/test"
 // import axios from "axios"
@@ -66,5 +68,22 @@ describe.only("test test suite", () => {
 //         const actual = "Luke Skywalker"
 //         expect(result).toBe(actual)
 //         expect(mockAxios.get).toHaveBeenCalledTimes(1);
+//     })
+// })
+
+// describe("Test test suite" , () => {
+//     let sut : TestData;
+  
+//     beforeEach(() => {
+//         sut =  new TestData();
+//         jest.spyOn(sut , 'getData').mockResolvedValue("amir==>")
+//     })
+//     afterEach(() => {
+//         jest.clearAllMocks();
+//     })
+//     it("Should be amir==>12345" , async () => {
+//         const actual = await sut.printData("amir");
+//         const expected = "amir==>12345";
+//         expect(actual).toBe(expected);
 //     })
 // })

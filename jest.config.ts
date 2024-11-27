@@ -3,7 +3,7 @@ import type { Config } from '@jest/types'
 const baseDir = '<rootDir>/src/app/server_app';
 const baseTestDir = '<rootDir>/src/test';
 
-const testDir = "<rootDir>/src/app/test_test"
+ const testDir = "<rootDir>/src/app/test_test"
 
 const config: Config.InitialOptions = {
     preset: 'ts-jest',
@@ -11,12 +11,12 @@ const config: Config.InitialOptions = {
     verbose: true,
     collectCoverage: true,
     collectCoverageFrom: [
-        // `${baseDir}/**/*.ts`
-        `${testDir}/**/*.ts`
+        `${baseDir}/**/*.ts`
+        // `${testDir}/**/*.ts`
     ],
     testMatch:[
         `${testDir}/**/*.ts`
-        // `${baseTestDir}/server_app/**/*test.ts`,
+        // `${baseTestDir}/server_app/server/**/*test.ts`,
         // `${baseTestDir}/server_app4/**/*test.ts`,
         // `${baseTestDir}/Utils.test.ts`
     ]
