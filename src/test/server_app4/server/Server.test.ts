@@ -16,7 +16,7 @@ const requestMock = {
 }
 
 const responseMock = {
-    end: jest.fn,
+    end: jest.fn(),
     writeHead: jest.fn()
 }
 
@@ -29,6 +29,7 @@ jest.mock("http", () => {
     return {
         createServer: (cb: Function) => {
             cb(requestMock, responseMock)
+            return serverMock;
         }
     }
 })
@@ -38,15 +39,15 @@ describe("Server test suite", () => {
 
     beforeEach(() => {
         sut = new Server();
-        expect(Authorizer).toHaveBeenCalledTimes(1)
-        expect(ReservationsDataAccess).toHaveBeenCalledTimes(1)
     })
 
     afterEach(() => {
         jest.clearAllMocks();
     })
 
-    it("Should work by now" , () => {
-        sut.startServer();
-    })
+    it("Should start server on port 8080 and end the request" , async () => {
+        await sut.startServer();
+        expect(serverMock.listen).toHaveBeenCalledWith(8080);
+        expect(responseMock.end).toHaveBeenCalled() 
+    }) 
 })
